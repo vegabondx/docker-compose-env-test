@@ -1,0 +1,49 @@
+version: '3.7' #version of docker compose to use
+
+x-common-variables: 
+  &common-variables
+  - COMMONVAR=thisIsDeclaredInYamlFile
+  # This variable is in Shell and is forwarded to yaml
+  - SHELLVARFORWARD
+  # This will NOT be accessible in YAML UNLESS it is in the Shell 
+  - SHELLVARFORWARDWITHDEFAULT=${SHELLVARFORWARDWITHDEFAULT:-thisIsDefaultValueForUndeclaredShellVariable}
+  - DOTENVVARFORWARD
+
+services:
+  sandbox:
+    container_name: sandbox
+    build:
+      context: .
+    command: > 
+      bash -c "
+      echo 'Testing accessibility within YAML'
+      && echo 'DOTENV value in yaml is ${DOTENV}'
+      && echo 'DOTENVVARFORWARD value in yaml is ${DOTENVVARFORWARD}'
+      && echo 'SHELLVAR value in yaml is ${SHELLVAR}'
+      && echo 'SHELLVARFORWARD value in yaml is ${SHELLVARFORWARD}'
+      && echo 'SHELLVARFORWARDWITHDEFAULT value in yaml ${SHELLVARFORWARDWITHDEFAULT}'
+      && echo 'COMMONVAR value in yaml is ${COMMONVAR}'
+      && echo 'ENVFILE value in yaml is ${ENVFILE}'
+      && echo 'DOCKERFILEENV value yaml is ${DOCKERFILEENV}'
+      && echo '============================================'
+      && /dev_config/test_variable.sh"
+    volumes:
+      - type: bind
+        source: ./dev_config
+        target: /dev_config
+      #This will mount it to tmp and not tmp/<valueofEnvFile>
+      - type: bind
+        source: ./dev_config
+        target: /tmp/${ENVFILE}
+      #this can be done as it is 
+      - type: bind
+        source: ./dev_config
+        target: /${DOTENV}
+    env_file:
+      - .env.test
+    environment: *common-variables 
+      # <<: *common-variables
+      #UNCOMMONVAR: UncommonVariableValueInService
+
+
+

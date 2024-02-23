@@ -1,0 +1,20 @@
+This project demonstrates Environment variables in docker and their accessibility
+
+Execution
+
+Setup: 
+        export SHELLVAR="ThisIsDeclaredInShell"
+        export SHELLVARFORWARD="ThisIsDeclaredInShellToBeForwarded"
+
+
+Standard execution
+
+       docker compose --env-file .env.override up  
+
+
+To use the override 
+
+        export SHELLVARFORWARDWITHDEFAULT="ThisIsDeclaredInShellToNotBeDefaulted" 
+
+        docker compose --env-file .env.override up 
+
