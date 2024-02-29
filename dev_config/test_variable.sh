@@ -7,4 +7,6 @@ echo "SHELLVAR value in the script is ${SHELLVAR}"
 echo "COMMONVAR value in the script is ${COMMONVAR}"
 echo "ENVFILE value in the script is ${ENVFILE}"
 echo "DOCKERFILEENV value in the script is ${DOCKERFILEENV}"
+SECRET=$(cat /run/secrets/file_secret)
+echo "SECRET value parsed in the script is ${SECRET}"
 #echo "UNCOMMONVAR value in script is ${UNCOMMONVAR}"

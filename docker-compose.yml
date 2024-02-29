@@ -9,6 +9,10 @@ x-common-variables:
   - SHELLVARFORWARDWITHDEFAULT=${SHELLVARFORWARDWITHDEFAULT:-thisIsDefaultValueForUndeclaredShellVariable}
   - DOTENVVARFORWARD
 
+secrets:
+  file_secret: 
+    file: ./secrets/secret.txt
+
 services:
   sandbox:
     container_name: sandbox
@@ -27,6 +31,7 @@ services:
       && echo 'DOCKERFILEENV value yaml is ${DOCKERFILEENV}'
       && echo '============================================'
       && /dev_config/test_variable.sh"
+      
     volumes:
       - type: bind
         source: ./dev_config
@@ -39,6 +44,8 @@ services:
       - type: bind
         source: ./dev_config
         target: /${DOTENV}
+    secrets:
+      - file_secret
     env_file:
       - .env.test
     environment: *common-variables 

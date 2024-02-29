@@ -2,7 +2,8 @@ This project demonstrates Environment variables in docker and their accessibilit
 
 Execution
 
-Setup: 
+Setup:
+
         export SHELLVAR="ThisIsDeclaredInShell"
         export SHELLVARFORWARD="ThisIsDeclaredInShellToBeForwarded"
 
