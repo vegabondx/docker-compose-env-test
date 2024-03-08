@@ -26,6 +26,7 @@ services:
       && echo 'SHELLVAR value in yaml is ${SHELLVAR}'
       && echo 'SHELLVARFORWARD value in yaml is ${SHELLVARFORWARD}'
       && echo 'SHELLVARFORWARDWITHDEFAULT value in yaml ${SHELLVARFORWARDWITHDEFAULT}'
+      && echo 'RUNENVVAR value in yaml is ${RUNENVVAR}'
       && echo 'COMMONVAR value in yaml is ${COMMONVAR}'
       && echo 'ENVFILE value in yaml is ${ENVFILE}'
       && echo 'DOCKERFILEENV value yaml is ${DOCKERFILEENV}'

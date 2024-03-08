@@ -1,14 +1,12 @@
 This project demonstrates Environment variables in docker and their accessibility
 
-Execution
+Execution:
 
 Setup:
 
-        export SHELLVAR="ThisIsDeclaredInShell"
-        export SHELLVARFORWARD="ThisIsDeclaredInShellToBeForwarded"
+        source bash_environment.sh
 
-
-Standard execution
+Standard execution:
 
        docker compose up
 
@@ -17,7 +15,11 @@ To use the override
 
         export SHELLVARFORWARDWITHDEFAULT="ThisIsDeclaredInShellToNotBeDefaulted" 
 
-        docker compose --env-file env-file-override.env up
+        docker compose --env-file env-file-override.env 
+
+To use the top level override: 
+
+        docker compose run -e RUNENVVAR=ThisValueIsSetinComposeRun sandbox
 
 
  
