@@ -10,7 +10,7 @@ Setup:
 
 Standard execution
 
-       docker compose --env-file .env.override up  
+       docker compose up
 
 
 To use the override 
