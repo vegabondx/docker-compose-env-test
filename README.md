@@ -17,5 +17,9 @@ To use the override
 
         export SHELLVARFORWARDWITHDEFAULT="ThisIsDeclaredInShellToNotBeDefaulted" 
 
-        docker compose --env-file .env.override up 
+        docker compose --env-file .env.override up
 
+
+ 
+
+![Precedence](DockerPrecedance.drawio.png "Precedance")
