@@ -31,7 +31,7 @@ services:
       && echo 'DOCKERFILEENV value yaml is ${DOCKERFILEENV}'
       && echo '============================================'
       && /dev_config/test_variable.sh"
-      
+
     volumes:
       - type: bind
         source: ./dev_config
@@ -47,7 +47,7 @@ services:
     secrets:
       - file_secret
     env_file:
-      - .env.test
+      - env_file_service.env
     environment: *common-variables 
       # <<: *common-variables
       #UNCOMMONVAR: UncommonVariableValueInService
